@@ -6,28 +6,46 @@ body {
 
 .container {
   width: 50vw;
+  min-width: 350px;
   margin: auto;
   padding: 5vh 10vw;
+}
+
+form {
+  position: relative;
+}
+
+.control-container {
+  display: flex;
+  position: absolute;
+  top: 30%;
+  right: 3%;
+}
+
+.container > .task-container {
+  margin-bottom: 20px;
 }
 
 .task-container {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-start;
-  width: 50vw;
+  align-items: center;
 }
 
 .task-checkbox {
-  width: 1.5vw;
-  height: 1.5vw;
-  padding: 1.5vw;
+  width: 20px;
+  height: 20px;
+  padding: 1.2em 20px;
 }
 
 .task-value {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
   width: 43vw;
-  height: 1.5vw;
-  padding: 1.5vw 1vw;
-  margin-left: 0.1vw;
+  min-width: 300px;
+  padding: 1.2em 15px;
+  border-left: 2px solid #fff;
 }
 
 .task-value > p {
@@ -36,32 +54,37 @@ body {
   overflow: auto;
 }
 
+.completed {
+  background-color: #ccc !important;
+  text-decoration: line-through;
+}
+
 .color-container {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-  width: 10vw;
-  position: relative;
-  top: -1.9em;
-  left: 33vw;
+  align-items: center;
 }
 
 .btn {
-  width: 1vw;
-  height: 1vw;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+}
+
+.picked {
+  border: 2px solid chocolate;
 }
 
 #input-field {
-  width: 48vw;
+  width: 48.5vw;
+  min-width: 330px;
   height: 3em;
   margin: auto;
 }
 
 #add {
   background-color: darkcyan;
-  position: relative;
-  top: -3.2em;
-  left: 45vw;
   color: white;
   border: 2px solid #4CAF50;
+  margin-left: 10px;
 }

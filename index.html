@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>TODO</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,10 +11,14 @@
   <p>Your todos</p>
   <form method="post">
     <input id="input-field" type="text" placeholder="Add new item">
-    <div class="color-container">
-      <!--generated colors-->
+    <div class="control-container">
+      <div class="color-container">
+        <!--generated colors-->
+      </div>
+      <div>
+        <button type="submit" id="add">Add</button>
+      </div>
     </div>
-    <button type="submit" id="add">Add</button>
   </form>
 </div>
 <script src="script.js"></script>

@@ -1,89 +1,76 @@
 (function () {
-  const colorArray = [
-    '#530cff', '#ffa400', 'green', 'red', '#00d669', 'blue',
-  ];
+  const colorArray = ["#530cff", "#ffa400", "green", "red", "#00d669", "blue"];
 
-  let pickedColor = '';
+  let pickedColor = "";
 
-  function colorButtons() {
-    const colorContainer = document.querySelector('.color-container');
+  (function renderColorContainer() {
+    const colorContainer = document.querySelector(".color-container");
     for (const color of colorArray) {
-      const colorBox = document.createElement('div');
-      colorBox.className = 'btn';
+      const colorBox = document.createElement("div");
+      colorBox.className = "btn";
       colorBox.style.backgroundColor = color;
       colorContainer.appendChild(colorBox);
     }
-  }
-
-  colorButtons();
+  })();
 
   function pickColor(event) {
     pickedColor = this.style.backgroundColor;
-    colorBtns.forEach((btn) => btn.style.border = '');
-    this.style.border = '2px solid chocolate';
+    colorBtns.forEach((btn) => btn.classList.remove("picked"));
+    this.classList.add("picked");
   }
 
-  const colorBtns = document.querySelectorAll('.btn');
-  colorBtns.forEach((btn) => btn.addEventListener('click', pickColor));
-
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
+  const colorBtns = document.querySelectorAll(".btn");
+  colorBtns.forEach((btn) => btn.addEventListener("click", pickColor));
 
   function markCompleted(event) {
-    const parentContainer = this.closest('.task-container')
-    let targetBackgroundColor;
+    const parentContainer = this.closest(".task-container");
     if (this.checked) {
-      targetBackgroundColor = '#ccc';
-      parentContainer.querySelector('p').style.textDecoration = 'line-through';
+      parentContainer.classList.add("completed");
     } else {
-      targetBackgroundColor = this['data-bg-color'];
-      parentContainer.querySelector('p').style.textDecoration = 'initial';
+      parentContainer.classList.remove("completed");
     }
-    parentContainer.querySelectorAll('div')
-        .forEach((element) => element.style.backgroundColor = targetBackgroundColor);
   }
 
   function newTask(event) {
-    const input = document.getElementById('input-field');
-
-    const newTaskContainer = document.createElement('div');
-    newTaskContainer.className = 'task-container';
+    const input = document.getElementById("input-field");
 
     if (!pickedColor) {
-      pickedColor = colorArray[getRandomInt(colorArray.length)];
+      pickedColor =
+        colorArray[
+          (() => Math.floor(Math.random() * Math.floor(colorArray.length)))()
+        ];
     }
 
-    const checkboxContainer = document.createElement('div');
-    checkboxContainer.className = 'task-checkbox';
-    checkboxContainer.style.backgroundColor = pickedColor;
+    const newTaskContainer = document.createElement("div");
+    newTaskContainer.className = "task-container";
+    newTaskContainer.style.backgroundColor = pickedColor;
+
+    const checkboxContainer = document.createElement("div");
+    checkboxContainer.className = "task-checkbox";
     newTaskContainer.appendChild(checkboxContainer);
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox['data-bg-color'] = pickedColor;
-    checkbox.addEventListener('change', markCompleted)
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", markCompleted);
     checkboxContainer.appendChild(checkbox);
 
-    const valueContainer = document.createElement('div');
-    valueContainer.className = 'task-value';
-    valueContainer.style.backgroundColor = pickedColor;
+    const valueContainer = document.createElement("div");
+    valueContainer.className = "task-value";
     newTaskContainer.appendChild(valueContainer);
 
-    const task = document.createElement('p');
+    const task = document.createElement("p");
     task.textContent = input.value;
     valueContainer.appendChild(task);
 
     form.insertAdjacentElement("beforebegin", newTaskContainer);
-    newTaskContainer.insertAdjacentElement("afterend", document.createElement("br"));
 
-    input.value = '';
-    pickedColor = '';
-    colorBtns.forEach((btn) => btn.style.border = '');
+    input.value = "";
+    pickedColor = "";
+    colorBtns.forEach((btn) => btn.classList.remove("picked"));
 
     event.preventDefault();
   }
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', newTask);
+  const form = document.querySelector("form");
+  form.addEventListener("submit", newTask);
 })();
