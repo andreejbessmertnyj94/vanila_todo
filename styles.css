@@ -5,10 +5,9 @@ body {
 }
 
 .container {
-  width: 50vw;
-  min-width: 350px;
+  width: 600px;
   margin: auto;
-  padding: 5vh 10vw;
+  padding: 50px 50px;
 }
 
 form {
@@ -18,38 +17,39 @@ form {
 .control-container {
   display: flex;
   position: absolute;
-  top: 30%;
-  right: 3%;
-}
-
-.container > .task-container {
-  margin-bottom: 20px;
+  top: 15px;
+  right: 15px;
 }
 
 .task-container {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .task-checkbox {
-  width: 20px;
-  height: 20px;
-  padding: 1.2em 20px;
+  width: 16px;
+  height: 16px;
+  padding: 22px 22px;
+  border-right: 2px solid #fff;
+}
+
+.checkbox {
+  margin: 0;
 }
 
 .task-value {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  width: 43vw;
-  min-width: 300px;
-  padding: 1.2em 15px;
-  border-left: 2px solid #fff;
+  width: 508px;
+  padding: 20px 15px;
 }
 
 .task-value > p {
   margin: 0;
+  line-height: 20px;
   color: white;
   overflow: auto;
 }
@@ -68,7 +68,7 @@ form {
 .btn {
   width: 15px;
   height: 15px;
-  margin: 0 5px;
+  margin-right: 10px;
 }
 
 .picked {
@@ -76,10 +76,11 @@ form {
 }
 
 #input-field {
-  width: 48.5vw;
-  min-width: 330px;
-  height: 3em;
-  margin: auto;
+  width: 360px;
+  height: 45px;
+  padding-right: 231px;
+  padding-left: 5px;
+  border-radius: 5px;
 }
 
 #add {

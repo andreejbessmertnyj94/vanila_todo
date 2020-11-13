@@ -51,6 +51,7 @@
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.className = "checkbox"
     checkbox.addEventListener("change", markCompleted);
     checkboxContainer.appendChild(checkbox);
 
